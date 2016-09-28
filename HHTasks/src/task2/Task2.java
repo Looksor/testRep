@@ -18,9 +18,13 @@ public class Task2 {
 	private static long _cur = 1;
 
 	public static void main(String[] args) {
-		//long[] input = getInput();
-		System.out.println(find("11"));
-		//for (long l : input) System.out.println(l);
+		String[] result;
+		String[] input = getInput();
+		result = new String[input.length];
+		for (int i = 0; i < input.length; i++){
+			result[i] = find(input[i]);
+		}
+		for (String l : result) System.out.println(l);
 	}
 
 	private static String[] getInput() {
@@ -39,7 +43,7 @@ public class Task2 {
 		return input.toArray(new String[0]);
 	}
 
-	public static int find(String find)
+	private static String find(String find)
 	{
 		int hashToFind = find.hashCode();
 		// Start string init
@@ -52,7 +56,7 @@ public class Task2 {
 			String sub = _str.substring(i, find.length() + i);
 			subHash = sub.hashCode();
 			if (subHash == hashToFind){
-				if (sub.equals(find)) return i;
+				if (sub.equals(find)) return (i + 1) + "";
 			}
 			// extend
 			i++;
